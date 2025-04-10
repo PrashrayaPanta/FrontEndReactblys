@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+
 import { FiMail, FiLock } from "react-icons/fi";
 
 import { useFormik } from "formik";
@@ -9,23 +9,12 @@ import YupPassword from "yup-password";
 
 import { toast } from "react-toastify";
 
-// import http from "../http"
-
 YupPassword(Yup);
-
-// import { Link } from "react-router-dom";
-
-// import AlertMessage from "./AlertMessage";
-
-// import SubmitButton from "../components/SubmitButton";
-// import InputField from "../components/InputField";
-
 import { SubmitButton, InputField } from "../components";
 import http from "../http";
 import { useNavigate } from "react-router-dom";
 
 import PublicNavbar from "../components/PublicNavbar";
-import { FromLocalStorage } from "../library";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -39,15 +28,7 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
-  // const authToken = FromLocalStorage("userToken");
-
-  // useEffect(() => {
-  //   if (authToken) {
-  //     navigate("/profile");
-  //   }
-  // }, [authToken]);
-
-
+ 
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -57,26 +38,16 @@ const Login = () => {
     },
     validationSchema,
     onSubmit: (values, { setSubmitting }) => {
-      // console.log(values);
-
-      //Make http request
-      // http.post("")
-
+  
       http
         .post("/login", values, {withCredentials:true})
         .then((success) => {
-
-          console.log("Hello i am inside success of .then block");
-          
-          console.log(success);
-          console.log(success.data.message);
-
-          console.log(success.data.token);
-
           navigate("/profile");
         })
         .catch((error) => {
-          console.log(error.response.data.message);
+
+          toast.error(error.response.data.message);
+          
         })
         .finally(() => {
           setSubmitting(false);

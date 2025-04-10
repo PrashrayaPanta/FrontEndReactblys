@@ -6,8 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import PublicNavbar from "./PublicNavbar";
 import http from "../http";
-import LoadingComponent from "./LoadingComponent";
-import PostCardComponent from "./PostCardComponent";
+
 
 const Homepage = () => {
 

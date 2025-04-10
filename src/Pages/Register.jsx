@@ -58,19 +58,14 @@ const Register = () => {
         .post("/register", values)
         .then((success) => {
 
-          console.log(success);
-          
-
-
+          // console.log(success.data.message);
           navigate("/login");
 
         })
 
         .catch((error) => {
 
-          
-            toast.error(error.response.data.message);
-            
+          toast.error(error.response.data.message);
           
         })
 
