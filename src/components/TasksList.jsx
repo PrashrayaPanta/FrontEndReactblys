@@ -17,7 +17,25 @@ const TasksList = () => {
     }
 
 
+    const handleDeleteTask = (taskId) => () => {
+
+            http.delete(`/tasks/${taskId}`, { withCredentials: true }).then((response) => http.get("/tasks", { withCredentials: true })).then((response) => {
+                setTasks(response.data.data); // Assuming tasks are in `response.data.data`
+            }
+            ).catch((error) => {
+                console.error("Error deleting task:", error);
+            }).catch((error) => {
+                console.error("Error fetching tasks:", error);
+            });
+
+
+
+    }
+
+
     const [tasks, setTasks] = useState([]);
+
+
 
     useEffect(() => {
         http.get("/tasks", { withCredentials: true })
@@ -44,7 +62,7 @@ const TasksList = () => {
                         <li key={task.id}>
                             <h3>{task.title}</h3>
                             <p>{task.description}</p>
-                            <button className='bg-red-400 p-2'>Delete</button>
+                            <button className='bg-red-400 p-2' onClick={handleDeleteTask(task.id)}>Delete</button>
                         </li>
                     ))}
                 </ul>
