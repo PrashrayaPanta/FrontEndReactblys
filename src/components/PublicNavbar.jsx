@@ -1,11 +1,11 @@
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon,  XMarkIcon } from "@heroicons/react/24/outline";
 import { SiAuthy } from "react-icons/si";
 import { RiLoginCircleLine } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
-import { PlusIcon } from "@heroicons/react/20/solid";
+
 import { Link } from "react-router-dom";
-import { FaBlog } from "react-icons/fa";
+
 
 export default function PublicNavbar() {
   return (

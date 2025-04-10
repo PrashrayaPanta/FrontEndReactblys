@@ -1,11 +1,12 @@
 
 import http from '../http'
 import TasksList from '../components/TasksList'
-import React from 'react'
-import { Navigate } from 'react-router-dom'
+
+
 
 
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 
 
@@ -13,7 +14,7 @@ import { useNavigate } from 'react-router-dom'
 const Profile = () => {
 
 
-  const [username, setUsername] = React.useState("")
+  const [username, setUsername] = useState("")
 
   const navigate = useNavigate()
 
@@ -31,6 +32,7 @@ const Profile = () => {
 
 
 
+
     http.get("/dashboard", {withCredentials:true}).then((success) =>
       
       
@@ -39,10 +41,7 @@ const Profile = () => {
 
     
     ).catch(() =>{
-
-
-  
-
+      navigate("/login")
     })
 
 
